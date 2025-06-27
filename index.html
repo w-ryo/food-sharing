@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>FoodShare（HTML版）</title>
+</head>
+<body>
+  <h1>🍱 FoodShare - フード投稿</h1>
+  <form id="form">
+    食品名: <input type="text" id="name"><br>
+    賞味期限: <input type="date" id="expiry"><br>
+    地域: <input type="text" id="area"><br>
+    <button type="submit">投稿する</button>
+  </form>
+
+  <h2>📋 投稿一覧</h2>
+  <ul id="list"></ul>
+
+  <script>
+    const form = document.getElementById('form');
+    const list = document.getElementById('list');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const expiry = document.getElementById('expiry').value;
+      const area = document.getElementById('area').value;
+
+      const li = document.createElement('li');
+      li.textContent = `${name}（賞味期限: ${expiry}、地域: ${area}）`;
+      list.appendChild(li);
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
